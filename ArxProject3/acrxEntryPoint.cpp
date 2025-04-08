@@ -134,7 +134,7 @@ public:
 		return Acad::eOk;
 	}
 
-	void searchForOverlays() {	
+	void SearchForOverlays() {	
 
 		bool collission = false;
 
@@ -198,7 +198,7 @@ public:
 	static void ADSKMyPlagin_StartTest() {
 		if (g_pApp) {
 			g_pApp->GetAllLines();
-			g_pApp->searchForOverlays();
+			g_pApp->SearchForOverlays();
 		}
 	}
 
