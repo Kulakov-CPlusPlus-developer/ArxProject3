@@ -1,0 +1,9 @@
+﻿  acrxEntryPoint.cpp
+     Создается библиотека x64\Debug\ADSKArxProject3.lib и объект x64\Debug\ADSKArxProject3.exp
+  Создание кода
+  41 of 366 functions (11.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+rxapi.lib(libinit.obj) : warning LNK4099: "" PDB не найден с "rxapi.lib(libinit.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+  ArxProject3.vcxproj -> E:\ArxProject3\x64\Debug\ADSKArxProject3.arx
