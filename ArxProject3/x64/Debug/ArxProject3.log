@@ -1,7 +1,11 @@
-﻿  acrxEntryPoint.cpp
+﻿  StdAfx.cpp
+  _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+  ArxProject3.cpp
+  DocData.cpp
+  acrxEntryPoint.cpp
      Создается библиотека x64\Debug\ADSKArxProject3.lib и объект x64\Debug\ADSKArxProject3.exp
   Создание кода
-  41 of 366 functions (11.2%) were compiled, the rest were copied from previous compilation.
+  45 of 295 functions (15.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено

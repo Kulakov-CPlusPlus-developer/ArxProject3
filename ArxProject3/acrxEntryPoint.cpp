@@ -59,12 +59,7 @@ public:
 
 		//if (collission) {
 			//showMyWindow();
-		//}
-
-		m_lastRunTime = std::chrono::steady_clock::now();
-		
-		std::thread timerThread(&CArxProject3App::TimerFunction, this);
-		timerThread.detach();
+		//}		
 
 		// You *must* call On_kInitAppMsg here
 		AcRx::AppRetCode retCode =AcRxArxApp::On_kInitAppMsg (pkt) ;
@@ -91,23 +86,7 @@ public:
 	void CArxProject3App::InitApp() {
 		g_pApp = this;
 
-	}
-
-	void TimerFunction() {
-		while (true) {
-			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-			auto now = std::chrono::steady_clock::now();
-			
-			acedCommandS(RTSTR, L"._STARTTEST");			
-						
-			if (std::chrono::duration_cast<std::chrono::minutes>(now - m_lastRunTime).count() >= 10) {
-				
-				GetAllLines();
-				searchForOverlays();
-				m_lastRunTime = now;
-			}
-		}
-	}		
+	}			
 
 	Acad::ErrorStatus GetAllLines() {
 
@@ -155,7 +134,9 @@ public:
 		return Acad::eOk;
 	}
 
-	void searchForOverlays() {		
+	void searchForOverlays() {	
+
+		bool collission = false;
 
 		for (int i = 0; i < lineIds.logicalLength(); i++) {
 			for (int j = i+1; j < lineIds.logicalLength(); j++) {
@@ -206,29 +187,23 @@ public:
 				}
 			}
 		}
-	
-
-		
-	}
-
-	void showMyWindow() {		
+		if (collission) {
 			CAdUiDialog* MyWindow = new CAdUiDialog(102, nullptr, nullptr);
 			MyWindow->Create(102);
 			MyWindow->ShowWindow(SW_SHOW);
 			collission = false;
-		
+		}		
 	}
 
 	static void ADSKMyPlagin_StartTest() {
 		if (g_pApp) {
-			g_pApp->showMyWindow();			
+			g_pApp->GetAllLines();
+			g_pApp->searchForOverlays();
 		}
 	}
 
 
-private:
-	bool collission = false;
-	std::chrono::steady_clock::time_point m_lastRunTime;
+private:	
 	AcDbObjectIdArray lineIds;	
 };
 
